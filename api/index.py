@@ -4,7 +4,8 @@ import os
 
 app = Flask(__name__)
 
-genai.configure(api_key="AIzaSyB8ol4EN3eChS3AysqCzsljtPFRDQxeiX0")
+api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=api_key)
 
 @app.route("/api/python")
 def image_to_text():
