@@ -20,7 +20,7 @@ def image_to_text():
     # ---------
     ics_content = toics.text  # Extract the text content for the ICS file
     # Define the file path where you want to save the .ics file
-    ics_file_path = "event.ics"
+    ics_file_path = "api/uploads/event.ics"
     # Save the ICS content to a file
     with open(ics_file_path, "w") as ics_file:
         ics_file.write(ics_content)
