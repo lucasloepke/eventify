@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Steelhacks XI
+DTSTART:20240928T000000
+DTEND:20240929T235959
+LOCATION:Benedum Hall, University of Pittsburgh
+DESCRIPTION:Steelhacks XI Fall '24 hackathon at the University of Pittsburgh
+END:VEVENT
+END:VCALENDAR
