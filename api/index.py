@@ -1,10 +1,11 @@
 from flask import Flask
 import google.generativeai as genai
 import os
+from config import GOOGLE_API_KEY
 
 app = Flask(__name__)
 
-genai.configure(api_key="AIzaSyB8ol4EN3eChS3AysqCzsljtPFRDQxeiX0")
+genai.configure(api_key=GOOGLE_API_KEY)
 
 @app.route("/api/python")
 def image_to_text():
