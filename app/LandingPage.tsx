@@ -68,7 +68,7 @@ export default function LandingPage() {
               className="hidden"
               id="file-upload"
             />
-            <Button asChild>
+            <Button>
               <label htmlFor="file-upload" className="cursor-pointer">
                 <Upload className="mr-2 h-4 w-4" /> Upload
               </label>
