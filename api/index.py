@@ -1,11 +1,12 @@
 from flask import Flask
 import google.generativeai as genai
 import os
+import speech_recognition as sr
 
 app = Flask(__name__)
-
+# please insert api key
 api_key = os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key=api_key)
+genai.configure(api_key="")
 
 @app.route("/api/python")
 def image_to_text():
@@ -54,4 +55,4 @@ def voice_to_text():
         ics_file.write(ics_content)
 
     # ---------
-    return response.text
+    return "event from audio ics generated"

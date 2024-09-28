@@ -46,17 +46,17 @@ export default function LandingPage() {
   }
 
   return (
-      <main className="flex min-h-screen flex-col items-center">
+      <main className="flex min-h-screen flex-col items-center bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200">
         <header className="bg-black text-white p-4 w-full text-center">
-          <h1 className="text-2xl font-bold">Eventify</h1>
+          <h1 className="text-2xl font-bold">eventify</h1>
         </header>
     
 
       <div className="flex-grow flex flex-col items-center justify-center p-4">
-        <div className="max-w-2xl text-center mb-8">
-          <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
+        <div className="max-w-2xl text-center mb-4">
+          <h2 className="text-3xl font-bold mb-2">eventify your calendar</h2>
           <p className="text-lg">
-            At Eventify
+            . . .
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export default function LandingPage() {
 
         <Textarea
           placeholder="Or type your event details here..."
-          className="mt-4 w-full max-w-md"
+          className="mt-4 w-full h-40 p-4 max-w-md rounded-lg shadow-lg"
         />
       </div>
 
@@ -96,7 +96,7 @@ export default function LandingPage() {
           className="flex items-center"
         >
           <Github className="mr-2 h-4 w-4" />
-          <span>Goats</span>
+          <span>repository</span>
         </a>
       </footer>
     </main>
