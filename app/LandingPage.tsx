@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Camera, Mic, Github, Upload, FileText } from 'lucide-react'
+import { Camera, Mic, Github, Upload } from 'lucide-react'
 import { Button } from "./button"
 import { Input } from "./input"
 import { Textarea } from "./textarea"
@@ -12,27 +12,37 @@ export default function LandingPage() {
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-  
-      try {
-        const response = await fetch('/api/python', {
-          method: 'POST',
-          body: formData
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          console.log('File uploaded successfully:', data);
-        } else {
-          console.error('File upload failed.');
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await fetch('/api/python', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/octet-stream', // Accept binary data
+                }
+            });
+
+            if (response.ok) {
+                // Create a link to download the file (optional)
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'event.png'; // Specify the name for the downloaded file (if needed)
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url); // Clean up
+            } else {
+                console.error('File upload failed.');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
         }
-      } catch (error) {
-        console.error('Error uploading file:', error);
-      }
     }
   };
-  
 
   const handleCameraAccess = () => {
     // Handle camera access logic here
@@ -46,11 +56,10 @@ export default function LandingPage() {
   }
 
   return (
-      <main className="flex min-h-screen flex-col items-center bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200">
-        <header className="bg-black text-white p-4 w-full text-center">
-          <h1 className="text-2xl font-bold">eventify</h1>
-        </header>
-    
+    <main className="flex min-h-screen flex-col items-center bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200">
+      <header className="bg-black text-white p-4 w-full text-center">
+        <h1 className="text-2xl font-bold">eventify</h1>
+      </header>
 
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <div className="max-w-2xl text-center mb-4">

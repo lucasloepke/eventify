@@ -6,9 +6,9 @@ import speech_recognition as sr
 app = Flask(__name__)
 # please insert api key
 api_key = os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key="")
+genai.configure(api_key="AIzaSyBNHVmyKH0cGCfHeeKM2olvxyZ2X4B04Jc")
 
-@app.route("/api/python")
+@app.route("/api/python", methods=["POST"])
 def image_to_text():
     model = genai.GenerativeModel("gemini-1.5-pro-latest")
     myfile = genai.upload_file("api/uploads/steelhacks.png")
@@ -19,15 +19,12 @@ def image_to_text():
         [response.text, "\n\n", "Turn this event into an ICS file. Respond in text so that I can save the response as a .ics"]
     )
     # ---------
-    ics_content = toics.text  # Extract the text content for the ICS file
-    # Define the file path where you want to save the .ics file
+    ics_content = toics.text
     ics_file_path = "api/uploads/event.ics"
-    # Save the ICS content to a file
     with open(ics_file_path, "w") as ics_file:
         ics_file.write(ics_content)
-
     # ---------
-    return response.text
+    return ics_content
 
 def voice_to_text():
     audio_file = request.file['audio']
