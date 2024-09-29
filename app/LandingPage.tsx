@@ -20,7 +20,7 @@ export default function LandingPage() {
         formData.append('file', file);
 
         try {
-            const response = await fetch('/api/python', {
+            const response = await fetch('/api/image', {
                 method: 'POST',
                 body: formData,
             });
