@@ -31,16 +31,21 @@ def image_to_text():
         }
     ]
     
-    prompt = "Find and transcribe relevant event information. If an event cannot be found, return 'none'. If there are multiple events, put each on a new line."
+    prompt = "Find and transcribe relevant event information. If an event cannot be found, return 'none'. If there are multiple events, put each on a new line. The current year is 2024, don't ever create events before this year."
     
     response = model.generate_content(image_parts + [prompt])
+    
+    natural_language_response = response.text
     
     toics = model.generate_content(
         [response.text, "\n\n", "Turn this event into an ICS file. Respond in text so that I can save the response as a .ics"]
     )
     
     ics_content = toics.text
-    return jsonify({"ics_content": ics_content})
+    return jsonify({
+        "natural_language_response": natural_language_response,
+        "ics_content": ics_content
+    })
 
 def voice_to_text():
     audio_file = request.files['audio']

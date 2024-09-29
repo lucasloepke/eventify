@@ -9,6 +9,7 @@ import { Textarea } from "./textarea"
 export default function LandingPage() {
   const [isRecording, setIsRecording] = useState(false)
   const [icsContent, setIcsContent] = useState<string | null>(null)
+  const [naturalLanguageResponse, setNaturalLanguageResponse] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ export default function LandingPage() {
             if (response.ok) {
                 const data = await response.json();
                 setIcsContent(data.ics_content);
+                setNaturalLanguageResponse(data.natural_language_response);
                 
                 // Create a Blob from the ICS content
                 const blob = new Blob([data.ics_content], { type: 'text/calendar' });
@@ -111,12 +113,13 @@ export default function LandingPage() {
           className="mt-4 w-full h-40 p-4 max-w-md rounded-lg shadow-lg"
         />
 
-        {icsContent && (
+        {naturalLanguageResponse && (
           <div className="mt-4 p-4 bg-white rounded-lg shadow-lg">
-            <h3 className="text-lg font-semibold mb-2">Generated ICS Content:</h3>
-            <pre className="whitespace-pre-wrap">{icsContent}</pre>
+            <h3 className="text-lg font-semibold mb-2">Event Information:</h3>
+            <p className="whitespace-pre-wrap">{naturalLanguageResponse}</p>
           </div>
         )}
+
       </div>
 
       <footer className="bg-secondary text-secondary-foreground p-4 flex justify-center items-center">
