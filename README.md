@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://event-ify.vercel.app">
-    <img src="https://github.com/user-attachments/assets/10c3bdeb-cf0f-494a-b8e8-b8c735205b46" height="500">
+    <img src="https://github.com/user-attachments/assets/10c3bdeb-cf0f-494a-b8e8-b8c735205b46" height="350">
     <h2 align="center">Eventify</h2>
   </a>
 </p>
