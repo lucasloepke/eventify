@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Camera, Mic, Github, Upload } from 'lucide-react'
 import { Button } from "./button"
 import { Input } from "./input"
@@ -9,10 +9,12 @@ import { Textarea } from "./textarea"
 export default function LandingPage() {
   const [isRecording, setIsRecording] = useState(false)
   const [icsContent, setIcsContent] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+        setIsLoading(true);
         const formData = new FormData();
         formData.append('file', file);
 
@@ -43,6 +45,8 @@ export default function LandingPage() {
             }
         } catch (error) {
             console.error('Error uploading file:', error);
+        } finally {
+            setIsLoading(false);
         }
     }
   };
@@ -67,9 +71,17 @@ export default function LandingPage() {
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <div className="max-w-2xl text-center mb-4">
           <h2 className="text-3xl font-bold mb-2">eventify your calendar</h2>
-          <p className="text-lg">
-            . . .
-          </p>
+          {isLoading ? (
+            <p className="text-lg">
+              <span className="loading-dot">.</span>
+              <span className="loading-dot">.</span>
+              <span className="loading-dot">.</span>
+            </p>
+          ) : (
+            <p className="text-lg">
+              . . .
+            </p>
+          )}
         </div>
 
         <div className="flex flex-wrap justify-center gap-4">
@@ -95,7 +107,7 @@ export default function LandingPage() {
         </div>
 
         <Textarea
-          placeholder="Or type your event details here..."
+          placeholder="Or paste your event details here..."
           className="mt-4 w-full h-40 p-4 max-w-md rounded-lg shadow-lg"
         />
 
