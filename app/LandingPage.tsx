@@ -84,7 +84,7 @@ export default function LandingPage() {
           )}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-3">
           <div>
             <Input
               type="file"
@@ -93,7 +93,7 @@ export default function LandingPage() {
               id="file-upload"
             />
             <Button>
-              <label htmlFor="file-upload" className="cursor-pointer">
+              <label htmlFor="file-upload" className="flex items-center cursor-pointer">
                 <Upload className="mr-2 h-4 w-4" /> Upload
               </label>
             </Button>
@@ -106,7 +106,7 @@ export default function LandingPage() {
               id="file-upload"
             />
             <Button>
-              <label htmlFor="file-upload" className="cursor-pointer">
+              <label htmlFor="file-upload" className="flex items-center cursor-pointer">
                 <Camera className="mr-2 h-4 w-4" /> Camera
               </label>
             </Button>
