@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://event-ify.vercel.app">
-    <img src="https://github.com/user-attachments/assets/10c3bdeb-cf0f-494a-b8e8-b8c735205b46" height="350">
+    <img src="https://github.com/user-attachments/assets/c22efea1-92d3-4a4f-9707-4afd77d92441">
     <h2 align="center">Eventify</h2>
   </a>
 </p>
@@ -20,7 +20,7 @@ Eventify is a cutting-edge hybrid Next.js + Python application that redefines ev
 
 ## How It Works
 
-Eventify automatically generates calendar events from various types of input. Whether you upload a photo of a flyer, screenshot a discord message, or take a picture of an event on a whiteboard, the system will take the image and convert the text into a .ics file that can be imported into any calendar app. You can also speak to the system directly or type your input to request an event of any kind.
+Eventify automatically generates calendar events from various types of input. Whether you upload a photo of a flyer, paste a copied discord message, or snap a picture of an event on a whiteboard, the system will take the image and convert the text into a .ics file that can be imported into any calendar app. You can also speak to the system directly or type your input to request an event of any kind.
 
 This is a tool designed to save you time by turning your screenshots, photos, and thoughts into structured calendar events instantly.
 
@@ -31,5 +31,5 @@ This is a tool designed to save you time by turning your screenshots, photos, an
 - **Calendar Integration:** Automatically add your uploaded images and recorded messages to your calendar, making event management a breeze.
 
 ## Authors' Emails
-<span style="font-size: 12px;">lucasloepke@gmail.com, deyanovva@gmail.com,connor.reger@gmail.com, csk56@pitt.edu  .</span>
+<span style="font-size: 12px;">lucasloepke@gmail.com, deyanovva@gmail.com, connor.reger@gmail.com, csk56@pitt.edu</span>
 
