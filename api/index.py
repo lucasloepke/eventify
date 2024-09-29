@@ -7,7 +7,7 @@ import io
 app = Flask(__name__)
 # please insert api key
 api_key = os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key="AIzaSyDcrVklvjN4wd6nFuRlu3FQLwDQwKYSdRk")
+genai.configure(api_key="AIzaSyC72KCjUSB-T97CspaTCHbntA2-DYthCqQ")
 
 @app.route("/api/image", methods=["POST"])
 def image_to_text():
