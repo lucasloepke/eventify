@@ -65,22 +65,20 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-r from-pink-300 via-purple-200 to-indigo-300">
-      <header className="bg-black text-white p-4 w-full text-center">
-        <h1 className="text-2xl font-bold">eventify</h1>
-      </header>
+<main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#04061f] via-[#132780] via-[#413c90] via-[#684391] to-[#a2578f]">
+
 
       <div className="flex-grow flex flex-col items-center justify-center p-4">
-        <div className="max-w-2xl text-center mb-4">
-          <h2 className="text-3xl font-bold mb-2">eventify your calendar</h2>
+        <div className="max-w-2xl text-white text-center mb-4">
+          <h2 className="text-3xl font-medium mb-2">Eventify your calendar</h2>
           {isLoading ? (
-            <p className="text-lg">
+            <p className="text-4xl">
               <span className="loading-dot">.</span>
               <span className="loading-dot">.</span>
               <span className="loading-dot">.</span>
             </p>
           ) : (
-            <p className="text-lg">
+            <p className="text-4xl">
               . . .
             </p>
           )}
@@ -100,9 +98,19 @@ export default function LandingPage() {
               </label>
             </Button>
           </div>
-          <Button onClick={handleCameraAccess}>
-            <Camera className="mr-2 h-4 w-4" /> Camera
-          </Button>
+          <div>
+            <Input
+              type="file"
+              onChange={handleFileUpload}
+              className="hidden"
+              id="file-upload"
+            />
+            <Button>
+              <label htmlFor="file-upload" className="cursor-pointer">
+                <Camera className="mr-2 h-4 w-4" /> Camera
+              </label>
+            </Button>
+          </div>
           <Button onClick={handleVoiceRecording}>
             <Mic className="mr-2 h-4 w-4" /> {isRecording ? 'Stop' : 'Record'} Voice
           </Button>
@@ -127,9 +135,9 @@ export default function LandingPage() {
           href="https://github.com/lucasloepke/eventify"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center"
+          className="flex items-center text-white hover:text-[#eed532] transition-all duration-300 ease-in-out transform hover:scale-110 hover:-translate-y-1"
         >
-          <Github className="mr-2 h-4 w-4" />
+          <Github className="mr-2 h-4 w-4 text-white hover:text-[#eed532]" />
           <span>repository</span>
         </a>
       </footer>

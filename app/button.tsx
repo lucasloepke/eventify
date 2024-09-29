@@ -1,4 +1,3 @@
-// components/ui/button.tsx
 import React from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,7 +7,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <button 
-      className="px-4 py-2 bg-black text-white rounded hover:bg-blue-800 transition-colors"
+      className="px-4 py-2 bg-black text-white rounded 
+                 border-2 border-transparent
+                 hover:bg-black hover:text-white hover:border-[#eed532]
+                 transition-all duration-300"
       {...props}
     >
       {children}
