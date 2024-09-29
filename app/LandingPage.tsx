@@ -8,6 +8,7 @@ import { Textarea } from "./textarea"
 
 export default function LandingPage() {
   const [isRecording, setIsRecording] = useState(false)
+  const [icsContent, setIcsContent] = useState<string | null>(null)
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -19,22 +20,24 @@ export default function LandingPage() {
             const response = await fetch('/api/python', {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/octet-stream', // Accept binary data
-                }
             });
 
             if (response.ok) {
-                // Create a link to download the file (optional)
-                const blob = await response.blob();
+                const data = await response.json();
+                setIcsContent(data.ics_content);
+                
+                // Create a Blob from the ICS content
+                const blob = new Blob([data.ics_content], { type: 'text/calendar' });
                 const url = window.URL.createObjectURL(blob);
+                
+                // Create a download link
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'event.ics'; // Specify the name for the downloaded file (if needed)
+                a.download = 'event.ics';
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
-                window.URL.revokeObjectURL(url); // Clean up
+                window.URL.revokeObjectURL(url);
             } else {
                 console.error('File upload failed.');
             }
@@ -95,6 +98,13 @@ export default function LandingPage() {
           placeholder="Or type your event details here..."
           className="mt-4 w-full h-40 p-4 max-w-md rounded-lg shadow-lg"
         />
+
+        {icsContent && (
+          <div className="mt-4 p-4 bg-white rounded-lg shadow-lg">
+            <h3 className="text-lg font-semibold mb-2">Generated ICS Content:</h3>
+            <pre className="whitespace-pre-wrap">{icsContent}</pre>
+          </div>
+        )}
       </div>
 
       <footer className="bg-secondary text-secondary-foreground p-4 flex justify-center items-center">

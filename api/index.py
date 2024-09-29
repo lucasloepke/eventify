@@ -1,30 +1,46 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import google.generativeai as genai
 import os
 from google.cloud import speech_v1 as speech
+import io
 
 app = Flask(__name__)
 # please insert api key
 api_key = os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key="AIzaSyBNHVmyKH0cGCfHeeKM2olvxyZ2X4B04Jc")
+genai.configure(api_key="AIzaSyA1otbx7UpySExce3QskByduiEo21uaZnk")
 
 @app.route("/api/python", methods=["POST"])
 def image_to_text():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    # Read the file into memory
+    image_content = file.read()
+    
     model = genai.GenerativeModel("gemini-1.5-pro-latest")
-    myfile = genai.upload_file("api/uploads/steelhacks.png")
-    response = model.generate_content(
-        [myfile, "\n\n", "Find and transcribe relevant event information. If an event cannot be found, return 'none'. If there are multiple events, put each on a new line."]
-    )
+    
+    # Use the in-memory image content
+    image_parts = [
+        {
+            "mime_type": file.content_type,
+            "data": image_content
+        }
+    ]
+    
+    prompt = "Find and transcribe relevant event information. If an event cannot be found, return 'none'. If there are multiple events, put each on a new line."
+    
+    response = model.generate_content(image_parts + [prompt])
+    
     toics = model.generate_content(
         [response.text, "\n\n", "Turn this event into an ICS file. Respond in text so that I can save the response as a .ics"]
     )
-    # ---------
+    
     ics_content = toics.text
-    # ics_file_path = "api/uploads/event.ics"
-    # with open(ics_file_path, "w") as ics_file:
-    #     ics_file.write(ics_content)
-    # ---------
-    return ics_content
+    return jsonify({"ics_content": ics_content})
 
 def voice_to_text():
     audio_file = request.files['audio']
