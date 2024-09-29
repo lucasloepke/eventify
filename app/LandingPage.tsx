@@ -30,7 +30,7 @@ export default function LandingPage() {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'event.png'; // Specify the name for the downloaded file (if needed)
+                a.download = 'event.ics'; // Specify the name for the downloaded file (if needed)
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
@@ -56,7 +56,7 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200">
+    <main className="flex min-h-screen flex-col items-center bg-gradient-to-r from-pink-300 via-purple-200 to-indigo-300">
       <header className="bg-black text-white p-4 w-full text-center">
         <h1 className="text-2xl font-bold">eventify</h1>
       </header>
