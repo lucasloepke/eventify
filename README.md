@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="https://nextjs-flask-starter.vercel.app/">
-    <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
-    <h5 align="center">Eventify</h5>
+  <a href="https://event-ify.vercel.app">
+    <img src="https://github.com/user-attachments/assets/10c3bdeb-cf0f-494a-b8e8-b8c735205b46" height="500">
+    <h2 align="center">Eventify</h2>
   </a>
 </p>
 
 <p align="center">
   Transform the way you manage events with Eventify, a dynamic application that combines the power of Next.js and Flask with the cutting-edge Google Gemini API.
   <br>
-  <span style="font-size: 12px;">Authors: Lucas Loepke, Vladimir Deianov, Conor Reger, Channdavel Kong</span>
+  <span style="font-size: 12px;">Authors: Lucas Loepke, Vladimir Deianov, Connor Reger, Channdavel Kong</span>
 </p>
 
 
@@ -20,12 +20,9 @@ Eventify is a cutting-edge hybrid Next.js + Python application that redefines ev
 
 ## How It Works
 
-The Python/Flask server is elegantly integrated into the Next.js app under `/api/`.
+Eventify automatically generates calendar events from various types of input. Whether you upload a photo of a flyer, screenshot a discord message, or take a picture of an event on a whiteboard, the system will take the image and convert the text into a .ics file that can be imported into any calendar app. You can also speak to the system directly or type your input to request an event of any kind.
 
-This integration is accomplished through [`next.config.js` rewrites](https://github.com/vercel/examples/blob/main/python/nextjs-flask/next.config.js), which direct any request to `/api/:path*` to the Flask API hosted in the `/api` folder.
-
-- **Local Development:** When running locally, the Flask server listens on `127.0.0.1:5328`.
-- **Production Deployment:** The Flask server operates as [Python serverless functions](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python) on Vercel, ensuring a smooth experience in production.
+This is a tool designed to save you time by turning your screenshots, photos, and thoughts into structured calendar events instantly.
 
 ## Features
 
