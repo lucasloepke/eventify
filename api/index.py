@@ -38,7 +38,7 @@ def image_to_text():
     natural_language_response = response.text
     
     toics = model.generate_content(
-        [response.text, "\n\n", "Turn this event into an ICS file. Respond in text so that I can save the response as a .ics"]
+        [response.text, "\n\n", "Turn this event into an ICS file. Respond in text so that I can save the response as a .ics. It is very important you do not add any footnotes, because it will mess up the conversion to the ics file. Just raw output."]
     )
     
     ics_content = toics.text
